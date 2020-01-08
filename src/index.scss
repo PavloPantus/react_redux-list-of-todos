@@ -1,0 +1,54 @@
+*{
+  transition: all 0.3s;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list-of-todos {
+  border-collapse: collapse;
+  text-align: center;
+  border: cadetblue 1px solid;
+  box-shadow: 10px 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+  &__row:hover {
+    background-color: cadetblue;
+    cursor: pointer;
+  }
+
+  &__heading:hover {
+    cursor: pointer;
+    background-color: cornflowerblue;
+  }
+
+  &__cell{
+    padding: 5px;
+    border-bottom: dimgrey 1px solid;
+  }
+
+  .completed {
+    background-color: rgba(203, 255, 238, 0.51);
+  }
+  .not-completed {
+    background-color: #ffd5d6;
+  }
+}
+
+.button {
+  cursor: pointer;
+  outline: none;
+  border: 1px solid cornflowerblue;
+  &_remove{
+    background-color: #0b2b07;
+    color: #ff9f93;
+    border: 1px solid red;
+    &:hover{
+      background-color: darkred;
+      transform: scale(1.1);
+    }
+  }
+}
+
