@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setArrayOfTodosAndUsersActionCreator,
-  getArrayOfTodosAndUsers } from './store';
+import classNames from 'classnames';
+import { setArrayOfTodos,
+  getTodos } from './store';
 
 import User from './User';
-
-const classNames = require('classnames');
 
 const TodoItem = (
   { todo,
@@ -51,12 +50,12 @@ const TodoItem = (
 );
 
 const getData = state => ({
-  arrayOfTodosAndUsers: getArrayOfTodosAndUsers(state),
+  arrayOfTodosAndUsers: getTodos(state),
 });
 
 const getMethods = dispatch => ({
   setArrayOfTodosAndUsers: value => dispatch(
-    setArrayOfTodosAndUsersActionCreator(value)
+    setArrayOfTodos(value)
   ),
 });
 

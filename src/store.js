@@ -2,41 +2,35 @@
 import { createStore } from 'redux';
 
 // action types
-const TYPE_SetArrayOfTodosAndUsers = (
-  'setArrayOfTodosAndUsers'
-);
-const TYPE_SetIsLoadingArrayOfTodosAndUsers = (
-  'setIsLoadingArrayOfTodosAndUsers'
-);
-const TYPE_SetIsLoadedArrayOfTodosAndUsers = (
-  'setIsLoadedArrayOfTodosAndUsers'
-);
-const TYPE_SetActiveSortField = 'setActiveSortField';
-const TYPE_SetReverseStatus = 'setReverseStatus';
+const TYPE_setTodos = ('setTodos');
+const TYPE_setIsLoadingTodos = ('setIsLoadingTodos');
+const TYPE_setIsLoadedTodos = ('setIsLoadedTodos');
+const TYPE_setActiveSortField = 'setActiveSortField';
+const TYPE_setReverseStatus = 'setReverseStatus';
 
 // action creators
-export const setArrayOfTodosAndUsersActionCreator = value => ({
-  type: TYPE_SetArrayOfTodosAndUsers, value,
+export const setArrayOfTodos = value => ({
+  type: TYPE_setTodos, value,
 });
-export const setIsLoadingArrayOfTodosAndUsersActionCreator = value => ({
-  type: TYPE_SetIsLoadingArrayOfTodosAndUsers, value,
+export const setIsLoadingTodos = value => ({
+  type: TYPE_setIsLoadingTodos, value,
 });
-export const setIsLoadedArrayOfTodosAndUsersActionCreator = value => ({
-  type: TYPE_SetIsLoadedArrayOfTodosAndUsers, value,
+export const setIsLoadedTodos = value => ({
+  type: TYPE_setIsLoadedTodos, value,
 });
-export const setActiveSortFieldActionCreator = value => ({
-  type: TYPE_SetActiveSortField, value,
+export const setActiveSortField = value => ({
+  type: TYPE_setActiveSortField, value,
 });
-export const setReverseStatusActionCreator = value => ({
-  type: TYPE_SetReverseStatus, value,
+export const setReverseStatus = value => ({
+  type: TYPE_setReverseStatus, value,
 });
 
 // selectors
-export const getArrayOfTodosAndUsers = state => state.arrayOfTodosAndUsers;
-export const getIsLoadingArrayOfTodosAndUsers = state => (
+export const getTodos = state => state.arrayOfTodosAndUsers;
+export const getIsLoadingTodos = state => (
   state.isLoadingArrayOfTodosAndUsers
 );
-export const getIsLoadedArrayOfTodosAndUsers = state => (
+export const getIsLoadedTodos = state => (
   state.isLoadedArrayOfTodosAndUsers
 );
 export const getActiveSortField = state => state.activeSortField;
@@ -45,27 +39,27 @@ export const getReverseStatus = state => state.reverseStatus;
 // reducer
 const reducer = (state, action) => {
   switch (action.type) {
-    case TYPE_SetArrayOfTodosAndUsers:
+    case TYPE_setTodos:
       return {
         ...state, arrayOfTodosAndUsers: action.value,
       };
 
-    case TYPE_SetIsLoadingArrayOfTodosAndUsers: return {
+    case TYPE_setIsLoadingTodos: return {
       ...state,
       isLoadingArrayOfTodosAndUsers: action.value,
     };
 
-    case TYPE_SetIsLoadedArrayOfTodosAndUsers: return {
+    case TYPE_setIsLoadedTodos: return {
       ...state,
       isLoadedArrayOfTodosAndUsers: action.value,
     };
 
-    case TYPE_SetActiveSortField: return {
+    case TYPE_setActiveSortField: return {
       ...state,
       activeSortField: action.value,
     };
 
-    case TYPE_SetReverseStatus: return {
+    case TYPE_setReverseStatus: return {
       ...state,
       reverseStatus: action.value,
     };

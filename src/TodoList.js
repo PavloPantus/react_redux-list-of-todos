@@ -1,18 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {
-  getArrayOfTodosAndUsers,
-  setArrayOfTodosAndUsersActionCreator,
-  getIsLoadingArrayOfTodosAndUsers,
-  setIsLoadingArrayOfTodosAndUsersActionCreator,
-  getIsLoadedArrayOfTodosAndUsers,
-  setIsLoadedArrayOfTodosAndUsersActionCreator,
-  getActiveSortField,
-  setActiveSortFieldActionCreator,
-  getReverseStatus,
-  setReverseStatusActionCreator,
-} from './store';
+import * as storeData from './store';
 
 import { todosUrl, usersUrl } from './api';
 import { getDataFromServer } from './helpers';
@@ -76,9 +65,7 @@ const TodoList = (
     return () => 1;
   };
 
-  const headings = ['Title', 'User', 'Completed', 'Remove item'];
-
-  console.log(getSortMethod());
+  const headers = ['Title', 'User', 'Completed', 'Remove item'];
 
   let visibleTodos = [...arrayOfTodosAndUsers].sort(
     getSortMethod(activeSortField)
@@ -108,7 +95,7 @@ const TodoList = (
             <table className="list-of-todos">
               <thead>
                 <tr>
-                  {headings.map(
+                  {headers.map(
                     item => (
                       <th
                         key={item}
@@ -146,28 +133,28 @@ const TodoList = (
 };
 
 const getData = state => ({
-  arrayOfTodosAndUsers: getArrayOfTodosAndUsers(state),
-  isLoadingArrayOfTodosAndUsers: getIsLoadingArrayOfTodosAndUsers(state),
-  isLoadedArrayOfTodosAndUsers: getIsLoadedArrayOfTodosAndUsers(state),
-  activeSortField: getActiveSortField(state),
-  reverseStatus: getReverseStatus(state),
+  arrayOfTodosAndUsers: storeData.getTodos(state),
+  isLoadingArrayOfTodosAndUsers: storeData.getIsLoadingTodos(state),
+  isLoadedArrayOfTodosAndUsers: storeData.getIsLoadedTodos(state),
+  activeSortField: storeData.getActiveSortField(state),
+  reverseStatus: storeData.getReverseStatus(state),
 });
 
 const getMethods = dispatch => ({
   setArrayOfTodosAndUsers: value => dispatch(
-    setArrayOfTodosAndUsersActionCreator(value)
+    storeData.setArrayOfTodos(value)
   ),
   setIsLoadingArrayOfTodosAndUsers: value => dispatch(
-    setIsLoadingArrayOfTodosAndUsersActionCreator(value)
+    storeData.setIsLoadingTodos(value)
   ),
   setIsLoadedArrayOfTodosAndUsers: value => dispatch(
-    setIsLoadedArrayOfTodosAndUsersActionCreator(value)
+    storeData.setIsLoadedTodos(value)
   ),
   setActiveSortField: value => dispatch(
-    setActiveSortFieldActionCreator(value)
+    storeData.setActiveSortField(value)
   ),
   setReverseStatus: value => dispatch(
-    setReverseStatusActionCreator(value)
+    storeData.setReverseStatus(value)
   ),
 });
 
