@@ -2,27 +2,27 @@
 import { createStore } from 'redux';
 
 // action types
-const TYPE_setTodos = ('setTodos');
-const TYPE_setIsLoadingTodos = ('setIsLoadingTodos');
-const TYPE_setIsLoadedTodos = ('setIsLoadedTodos');
-const TYPE_setActiveSortField = 'setActiveSortField';
-const TYPE_setReverseStatus = 'setReverseStatus';
+const SET_TODOS = ('SET_TODOS');
+const SET_ISLOADINGTODOS = ('SET_ISLOADINGTODOS');
+const SET_ISLOADEDTODOS = ('SET_ISLOADEDTODOS');
+const SET_ACTIVESORTFIELD = 'SET_ACTIVESORTFIELD';
+const SET_REVERSESTATUS = 'SET_REVERSESTATUS';
 
 // action creators
 export const setArrayOfTodos = value => ({
-  type: TYPE_setTodos, value,
+  type: SET_TODOS, value,
 });
 export const setIsLoadingTodos = value => ({
-  type: TYPE_setIsLoadingTodos, value,
+  type: SET_ISLOADINGTODOS, value,
 });
 export const setIsLoadedTodos = value => ({
-  type: TYPE_setIsLoadedTodos, value,
+  type: SET_ISLOADEDTODOS, value,
 });
-export const setActiveSortField = value => ({
-  type: TYPE_setActiveSortField, value,
+export const setActiveSortFieldTodoList = value => ({
+  type: SET_ACTIVESORTFIELD, value,
 });
-export const setReverseStatus = value => ({
-  type: TYPE_setReverseStatus, value,
+export const setReverseStatusTodoList = value => ({
+  type: SET_REVERSESTATUS, value,
 });
 
 // selectors
@@ -39,27 +39,27 @@ export const getReverseStatus = state => state.reverseStatus;
 // reducer
 const reducer = (state, action) => {
   switch (action.type) {
-    case TYPE_setTodos:
+    case SET_TODOS:
       return {
         ...state, arrayOfTodosAndUsers: action.value,
       };
 
-    case TYPE_setIsLoadingTodos: return {
+    case SET_ISLOADINGTODOS: return {
       ...state,
       isLoadingArrayOfTodosAndUsers: action.value,
     };
 
-    case TYPE_setIsLoadedTodos: return {
+    case SET_ISLOADEDTODOS: return {
       ...state,
       isLoadedArrayOfTodosAndUsers: action.value,
     };
 
-    case TYPE_setActiveSortField: return {
+    case SET_ACTIVESORTFIELD: return {
       ...state,
       activeSortField: action.value,
     };
 
-    case TYPE_setReverseStatus: return {
+    case SET_REVERSESTATUS: return {
       ...state,
       reverseStatus: action.value,
     };

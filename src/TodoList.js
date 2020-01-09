@@ -1,7 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import * as storeData from './store';
+import {
+  getTodos,
+  getIsLoadingTodos,
+  getIsLoadedTodos,
+  getActiveSortField,
+  getReverseStatus,
+  setArrayOfTodos,
+  setIsLoadingTodos,
+  setIsLoadedTodos,
+  setActiveSortFieldTodoList,
+  setReverseStatusTodoList,
+} from './store';
 
 import { todosUrl, usersUrl } from './api';
 import { getDataFromServer } from './helpers';
@@ -133,28 +144,28 @@ const TodoList = (
 };
 
 const getData = state => ({
-  arrayOfTodosAndUsers: storeData.getTodos(state),
-  isLoadingArrayOfTodosAndUsers: storeData.getIsLoadingTodos(state),
-  isLoadedArrayOfTodosAndUsers: storeData.getIsLoadedTodos(state),
-  activeSortField: storeData.getActiveSortField(state),
-  reverseStatus: storeData.getReverseStatus(state),
+  arrayOfTodosAndUsers: getTodos(state),
+  isLoadingArrayOfTodosAndUsers: getIsLoadingTodos(state),
+  isLoadedArrayOfTodosAndUsers: getIsLoadedTodos(state),
+  activeSortField: getActiveSortField(state),
+  reverseStatus: getReverseStatus(state),
 });
 
 const getMethods = dispatch => ({
   setArrayOfTodosAndUsers: value => dispatch(
-    storeData.setArrayOfTodos(value)
+    setArrayOfTodos(value)
   ),
   setIsLoadingArrayOfTodosAndUsers: value => dispatch(
-    storeData.setIsLoadingTodos(value)
+    setIsLoadingTodos(value)
   ),
   setIsLoadedArrayOfTodosAndUsers: value => dispatch(
-    storeData.setIsLoadedTodos(value)
+    setIsLoadedTodos(value)
   ),
   setActiveSortField: value => dispatch(
-    storeData.setActiveSortField(value)
+    setActiveSortFieldTodoList(value)
   ),
   setReverseStatus: value => dispatch(
-    storeData.setReverseStatus(value)
+    setReverseStatusTodoList(value)
   ),
 });
 
