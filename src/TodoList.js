@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
   getTodos,
-  getIsLoadingTodos,
+  getIsLoading,
   getIsLoadedTodos,
   getActiveSortField,
   getReverseStatus,
   setArrayOfTodos,
-  setIsLoadingTodos,
+  setIsLoading,
   setIsLoadedTodos,
   setActiveSortFieldTodoList,
   setReverseStatusTodoList,
@@ -145,7 +145,7 @@ const TodoList = (
 
 const getData = state => ({
   arrayOfTodosAndUsers: getTodos(state),
-  isLoadingArrayOfTodosAndUsers: getIsLoadingTodos(state),
+  isLoadingArrayOfTodosAndUsers: getIsLoading(state),
   isLoadedArrayOfTodosAndUsers: getIsLoadedTodos(state),
   activeSortField: getActiveSortField(state),
   reverseStatus: getReverseStatus(state),
@@ -156,7 +156,7 @@ const getMethods = dispatch => ({
     setArrayOfTodos(value)
   ),
   setIsLoadingArrayOfTodosAndUsers: value => dispatch(
-    setIsLoadingTodos(value)
+    setIsLoading(value)
   ),
   setIsLoadedArrayOfTodosAndUsers: value => dispatch(
     setIsLoadedTodos(value)
